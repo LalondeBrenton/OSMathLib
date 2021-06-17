@@ -4,7 +4,7 @@
 #include <type_traits>
 
 
-#define EPSILON 0.000001
+#define EPSILON 0.0000001
 
 	// Class to handle fractions and related functions
 template <class T>class fraction
@@ -71,7 +71,17 @@ public:
 	{
 		// Add the 2 fractions based off the LCD
 		int lcm = LCM(m_denominator, rhs.m_denominator);
-		m_numerator = (m_numerator * (lcm / m_denominator)) + (rhs.m_numerator * (lcm / rhs.m_denominator));
+		// Check for division by zero left side
+		if (m_denominator != 0)
+			m_numerator = (m_numerator * (lcm / m_denominator));
+		else
+			m_numerator = (m_numerator * (lcm / EPSILON));
+		// Check for division by zero right side
+		if (rhs.m_denominator != 0)
+			m_numerator += (rhs.m_numerator * (lcm / rhs.m_denominator));
+		else
+			m_numerator += (rhs.m_numerator * (lcm / EPSILON));
+
 		m_denominator = lcm;
 		return *this;
 	}
@@ -81,7 +91,16 @@ public:
 	{
 		// Subtracrt the 2 fractions based off the LCD
 		int lcm = LCM(m_denominator, rhs.m_denominator);
-		m_numerator = (m_numerator * (lcm / m_denominator)) - (rhs.m_numerator * (lcm / rhs.m_denominator));
+		// Check for division by zero left side
+		if (m_denominator != 0)
+			m_numerator = (m_numerator * (lcm / m_denominator));
+		else
+			m_numerator = (m_numerator * (lcm / EPSILON));
+		// Check for division by zero right side
+		if (rhs.m_denominator != 0)
+			m_numerator -= (rhs.m_numerator * (lcm / rhs.m_denominator));
+		else
+			m_numerator -= (rhs.m_numerator * (lcm / EPSILON));
 		m_denominator = lcm;
 		return *this;
 	}

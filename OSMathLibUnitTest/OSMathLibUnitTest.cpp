@@ -1,6 +1,6 @@
 #include "CppUnitTest.h"
 
-#include "../OSMathLib/OSMathLib.h"
+#include "../OSMathLib/fractions.h"
 
 using namespace Microsoft::VisualStudio::CppUnitTestFramework;
 //using namespace OSMathLib;

@@ -1,6 +1,6 @@
 #include <iostream>
 
-#include "../OSMathLib/OSMathLib.h"
+#include "../OSMathLib/fractions.h"
 //using namespace OSMathLib;
 
 

@@ -15,7 +15,7 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="OSMathLib.h">
+    <ClInclude Include="fractions.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
