@@ -15,7 +15,10 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="fractions.h">
+    <ClInclude Include="Fractions.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ComplexNumber.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

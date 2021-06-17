@@ -7,23 +7,23 @@
 #define EPSILON 0.0000001
 
 	// Class to handle fractions and related functions
-template <class T>class fraction
+template <class T>class Fraction
 {
 public:
 	// Default constructor initializes a 0/1 fraction
-	fraction()
+	Fraction()
 		: m_numerator(0)
 		, m_denominator(1)
 	{ }
 
 	// Assignment constructor
-	fraction(const T& numerator)
+	Fraction(const T& numerator)
 		: m_numerator(numerator)
 		, m_denominator(1)
 	{ }
 
 	// Assignment constructor
-	fraction(const T& numerator, const T& denominator)
+	Fraction(const T& numerator, const T& denominator)
 		: m_numerator(numerator)
 		, m_denominator(denominator)
 	{ }
@@ -49,7 +49,7 @@ public:
 	}
 
 	// Print to the console shift left
-	friend std::ostream& operator<<(std::ostream& os, const fraction& frac)
+	friend std::ostream& operator<<(std::ostream& os, const Fraction& frac)
 	{
 		os << frac.m_numerator << "/" << frac.m_denominator;
 		// Check for division by zero
@@ -59,7 +59,7 @@ public:
 	}
 
 	// Assisngment opperator for fractions
-	fraction& operator=(const fraction& rhs)
+	Fraction& operator=(const Fraction& rhs)
 	{
 		m_numerator = rhs.m_numerator;
 		m_denominator = rhs.m_denominator;
@@ -67,7 +67,7 @@ public:
 	}
 
 	// Assignment addition
-	fraction& operator+=(const fraction& rhs)
+	Fraction& operator+=(const Fraction& rhs)
 	{
 		// Add the 2 fractions based off the LCD
 		int lcm = LCM(m_denominator, rhs.m_denominator);
@@ -87,7 +87,7 @@ public:
 	}
 
 	// Assignment subtraction
-	fraction& operator-=(const fraction& rhs)
+	Fraction& operator-=(const Fraction& rhs)
 	{
 		// Subtracrt the 2 fractions based off the LCD
 		int lcm = LCM(m_denominator, rhs.m_denominator);
@@ -106,7 +106,7 @@ public:
 	}
 
 	// Assignment multiplication
-	fraction& operator*=(const fraction& rhs)
+	Fraction& operator*=(const Fraction& rhs)
 	{
 		// Multiply the 2 fractions
 		m_numerator = m_numerator * rhs.m_numerator;
@@ -115,7 +115,7 @@ public:
 	}
 
 	// Assignment division
-	fraction& operator/=(const fraction& rhs)
+	Fraction& operator/=(const Fraction& rhs)
 	{
 		// Multiply by the recipricol
 		m_numerator = m_numerator * rhs.m_denominator;
@@ -124,7 +124,7 @@ public:
 	}
 
 	// Addition of 2 fractions
-	friend fraction operator+(fraction lhs, const fraction& rhs)
+	friend Fraction operator+(Fraction lhs, const Fraction& rhs)
 	{
 		// Reuse addition assignmet
 		lhs += rhs;
@@ -133,7 +133,7 @@ public:
 	}
 
 	// Subtraction of 2 fractions
-	friend fraction operator-(fraction lhs, const fraction& rhs)
+	friend Fraction operator-(Fraction lhs, const Fraction& rhs)
 	{
 		// Reuse subtraction assignmet
 		lhs -= rhs;
@@ -141,7 +141,7 @@ public:
 	}
 
 	// Multiplication of 2 fractions
-	friend fraction operator*(fraction lhs, const fraction& rhs)
+	friend Fraction operator*(Fraction lhs, const Fraction& rhs)
 	{
 		// Reuse multiplication assignmet
 		lhs *= rhs;
@@ -149,19 +149,19 @@ public:
 	}
 
 	// Division of 2 fractions
-	friend fraction operator/(fraction lhs, const fraction& rhs)
+	friend Fraction operator/(Fraction lhs, const Fraction& rhs)
 	{
 		// Reuse division assignmet
 		lhs /= rhs;
 		return lhs;
 	}
-	inline bool operator==(const fraction& rhs) const { return  ((m_numerator == rhs.m_numerator) && (m_denominator == rhs.m_denominator));}
-	inline bool operator!=(const fraction& rhs) const { return !(*this == rhs); }
+	inline bool operator==(const Fraction& rhs) const { return  ((m_numerator == rhs.m_numerator) && (m_denominator == rhs.m_denominator));}
+	inline bool operator!=(const Fraction& rhs) const { return !(*this == rhs); }
 
-	inline bool operator< (const fraction& rhs) const { return (resolve() < rhs.resolve()); }
-	inline bool operator> (const fraction& rhs) const { return rhs < *this; }
-	inline bool operator<=(const fraction& rhs) const { return !(*this > rhs); }
-	inline bool operator>=(const fraction& rhs) const { return !(*this < rhs); }
+	inline bool operator< (const Fraction& rhs) const { return (resolve() < rhs.resolve()); }
+	inline bool operator> (const Fraction& rhs) const { return rhs < *this; }
+	inline bool operator<=(const Fraction& rhs) const { return !(*this > rhs); }
+	inline bool operator>=(const Fraction& rhs) const { return !(*this < rhs); }
 
 	void reduce()
 	{
@@ -171,12 +171,12 @@ public:
 		m_denominator /= gcd;
 	}
 
-	T& greatestcommonmultiple(const fraction& a, const fraction& b)
+	T& greatestcommonmultiple(const Fraction& a, const Fraction& b)
 	{
 		return GCM(a.m_denominator, b.m_denominator);
 	}
 
-	T& lowestcommonmultiple(const fraction& a, const fraction& b)
+	T& lowestcommonmultiple(const Fraction& a, const Fraction& b)
 	{
 		return GCM(a.m_denominator, b.m_denominator);
 	}

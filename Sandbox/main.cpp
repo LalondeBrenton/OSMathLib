@@ -1,15 +1,15 @@
 #include <iostream>
 
-#include "../OSMathLib/fractions.h"
+#include "../OSMathLib/Fractions.h"
 //using namespace OSMathLib;
 
 
 int main()
 {
 
-	fraction<int> f1 = { 1, 2 };
-	fraction<int> f2 = { 1, 6 };
-	fraction<int> f3;
+	Fraction<int> f1 = { 1, 2 };
+	Fraction<int> f2 = { 1, 6 };
+	Fraction<int> f3;
 
 	// 1/2 + 1/6 = 4/6
 	f3 = f1 + f2;
